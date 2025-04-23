@@ -1,6 +1,6 @@
 
 const mymongo = require("mongoose")
-mymongo.connect("mongodb://localhost:27017/Zoo")
+mymongo.connect("mongodb+srv://autodidact:CY0JbInyQLZ70Irr@maalot360db.i2kujcl.mongodb.net/?retryWrites=true&w=majority&appName=maalot360db")
 const mydb = mymongo.connection;
 mydb.on("open", ()=>{
     console.log("mongodb is open!!!");
