@@ -3,7 +3,7 @@ const mymongo = require("mongoose")
 
 
 const eventSchema = mymongo.Schema({
-    id:Number,
+    _id:Number,
     title:String,
     type:String,
     start:String,

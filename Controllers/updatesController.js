@@ -25,7 +25,7 @@ update.getAll = async(req, res)=>{
 update.getById = async(req,res)=>{
     let myid = req.params.myid
     try {
-        let data = await updateModel.find({code:myid})
+        let data = await updateModel.find({_id:myid})
         res.status(200)
         res.json(data)
 
@@ -36,9 +36,9 @@ update.getById = async(req,res)=>{
     
 
     update.delete = async(req,res)=>{
-    let id = req.params.myid
+    let myid = req.params.myid
     try {
-        await updateModel.deleteOne({code:id})
+        await updateModel.deleteOne({_id:myid})
         let data = await updateModel.find({})
         res.status(200)
         res.json(data)
@@ -63,11 +63,11 @@ update.add = async(req, res)=>{
     }}
 
     update.update = async(req, res)=>{
-    let id = req.params.myid
+    let myid = req.params.myid
     let editUpdate = req.body
     
     try {
-        await updateModel.updateOne({code:id}, editUpdate)
+        await updateModel.updateOne({_id:myid}, editUpdate)
         let data = await updateModel.find({})
         res.status(200)
         res.json(data)

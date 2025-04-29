@@ -15,7 +15,7 @@ event.getAll = async (req, res) => {
 event.getById = async (req, res) => {
     const myid = Number(req.params.myid);
     try {
-        const data = await eventModel.find({ id: myid });
+        const data = await eventModel.find({ _id: myid });
         res.status(200).json(data);
     } catch (error) {
         res.status(500).send("<h1>Server Error</h1>");
@@ -35,7 +35,7 @@ event.getByType = async (req, res) => {
 event.delete = async (req, res) => {
     const id = Number(req.params.myid);
     try {
-        await eventModel.deleteOne({ id: id });
+        await eventModel.deleteOne({ _id: id });
         const data = await eventModel.find({});
         res.status(200).json(data);
     } catch (error) {
@@ -55,10 +55,10 @@ event.add = async (req, res) => {
 };
 
 event.update = async (req, res) => {
-    const id = Number(req.params.myid);
+    const myid = Number(req.params.myid);
     const editEvent = req.body;
     try {
-        await eventModel.updateOne({ id: id }, editEvent);
+        await eventModel.updateOne({ _id: myid }, editEvent);
         const data = await eventModel.find({});
         res.status(200).json(data);
     } catch (error) {
