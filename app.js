@@ -25,7 +25,11 @@ app.use("/animal", animalRouter)
 
 
 app.get("/",(req,res)=>{
-    res.send("hello from server")
+    res.send(`<h1>List of request avilable in server</h1>
+              <ul>
+                    <li><a  href="https://maalot360-server.onrender.com/animal/getall" > https://maalot360-server.onrender.com/animal/getall </li>
+              </ul>
+    `)
 })
 
 app.listen(PORT, ()=>{
