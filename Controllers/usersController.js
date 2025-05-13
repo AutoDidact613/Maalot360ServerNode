@@ -2,14 +2,14 @@
 const express = require("express")
 
 
-const animModel = require("../Models/usersModel")
+const usersModel = require("../Models/usersModel")
 
-const animal = {}
+const user = {}
 
-animal.getAll = async(req, res)=>{
+user.getAll = async(req, res)=>{
 
     try {
-        let data = await animModel.find({})
+        let data = await usersModel.find({})
         res.status(200)
         res.json(data)
 
@@ -22,10 +22,10 @@ animal.getAll = async(req, res)=>{
     
 }
 
-animal.getById = async(req,res)=>{
+user.getById = async(req,res)=>{
     let myid = req.params.myid
     try {
-        let data = await animModel.find({code:myid})
+        let data = await usersModel.find({code:myid})
         res.status(200)
         res.json(data)
 
@@ -35,11 +35,11 @@ animal.getById = async(req,res)=>{
     }}
 
 
-animal.delete = async(req,res)=>{
+user.delete = async(req,res)=>{
     let id = req.params.myid
     try {
-        await animModel.deleteOne({code:id})
-        let data = await animModel.find({})
+        await usersModel.deleteOne({code:id})
+        let data = await usersModel.find({})
         res.status(200)
         res.json(data)
 
@@ -49,11 +49,11 @@ animal.delete = async(req,res)=>{
     }
 }
 
-animal.add = async(req, res)=>{
-    let newAnim = req.body
+user.add = async(req, res)=>{
+    let newUser = req.body
     try {
-        await animModel.create(newAnim)
-        let data = await animModel.find({})
+        await usersModel.create(newUser)
+        let data = await usersModel.find({})
         res.status(200)
         res.json(data)
 
@@ -62,13 +62,13 @@ animal.add = async(req, res)=>{
         res.send("<h1>Server Error</h1>")
     }}
 
-animal.update = async(req, res)=>{
+    user.update = async(req, res)=>{
     let id = req.params.myid
-    let editAnim = req.body
+    let editUser = req.body
     
     try {
-        await animModel.updateOne({code:id}, editAnim)
-        let data = await animModel.find({})
+        await usersModel.updateOne({code:id}, editUser)
+        let data = await usersModel.find({})
         res.status(200)
         res.json(data)
 
@@ -79,4 +79,4 @@ animal.update = async(req, res)=>{
 
 
 
-module.exports = animal
+module.exports = user
