@@ -2,7 +2,7 @@
 const express = require("express")
 
 
-const animModel = require("../Models/animalModel")
+const animModel = require("../Models/usersModel")
 
 const animal = {}
 

@@ -2,7 +2,7 @@ const express = require("express")
 
 const router = express.Router()
 
-const animalCtrl = require("../Controllers/animalController")
+const animalCtrl = require("../Controllers/usersController")
 
 router.get("/getAll", animalCtrl.getAll)
 router.get("/getById/:myid", animalCtrl.getById)
