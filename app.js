@@ -11,17 +11,17 @@ mydb.on("open", ()=>{
 const express = require("express")
 const cors = require("cors")
 
-const animalRouter = require("./Routers/usersRouter")
+const usersRouter = require("./Routers/usersRouter")
 
 const app = express()
-const PORT = 3000
+const PORT = 5000
 
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cors())
 
-app.use("/animal", animalRouter)
+app.use("/users", usersRouter)
 
 
 app.get("/",(req,res)=>{

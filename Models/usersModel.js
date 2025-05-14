@@ -1,13 +1,11 @@
-
 const mymongo = require("mongoose")
 
-
 const userSchema = mymongo.Schema({
-    code:Number,
-    name:String,
-    say:String
+    code: Number,
+    name: String,
+    say: String
 })
 
-const usersModel = mymongo.model("User", userSchema, "User")
+const usersModel = mymongo.model("User", userSchema, "Users_tbl")
 
 module.exports = usersModel
