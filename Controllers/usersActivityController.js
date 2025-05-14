@@ -24,7 +24,7 @@ usersActivity.getAll = async (req, res) => {
 usersActivity.getById = async (req, res) => {
     let myid = req.params.myid
     try {
-        let data = await usersActivityModel.find({ code: myid })
+        let data = await usersActivityModel.find({ id: myid })
         res.status(200)
         res.json(data)
 
@@ -38,7 +38,7 @@ usersActivity.getById = async (req, res) => {
 usersActivity.delete = async (req, res) => {
     let id = req.params.myid
     try {
-        await usersActivityModel.deleteOne({ code: id })
+        await usersActivityModel.deleteOne({ id: id })
         let data = await usersActivityModel.find({})
         res.status(200)
         res.json(data)
@@ -68,7 +68,7 @@ usersActivity.update = async (req, res) => {
     let editUsersActivity = req.body
 
     try {
-        await usersActivityModel.updateOne({ code: id }, editUsersActivity)
+        await usersActivityModel.updateOne({ id: id }, editUsersActivity)
         let data = await usersActivityModel.find({})
         res.status(200)
         res.json(data)

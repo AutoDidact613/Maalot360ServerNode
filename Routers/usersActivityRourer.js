@@ -2,13 +2,13 @@ const express = require("express")
 
 const router = express.Router()
 
-const usersActivityCtrl = require("../Controllers/usersActivityController")
+const usersActivity = require("../Controllers/usersActivityController")
 
-router.get("/getAll", usersActivityCtrl.getAll)
-router.get("/getById/:myid", usersActivityCtrl.getById)
-router.post("/add", usersActivityCtrl.add)
-router.put("/update", usersActivityCtrl.update)
-router.delete("/delete/:myid", usersActivityCtrl.delete)
+router.get("/getAll", usersActivity.getAll)
+router.get("/getById/:myid", usersActivity.getById)
+router.post("/add", usersActivity.add)
+router.put("/update", usersActivity.update)
+router.delete("/delete/:myid", usersActivity.delete)
 
 
 module.exports = router

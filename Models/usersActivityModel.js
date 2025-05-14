@@ -10,6 +10,6 @@ const usersActivitySchema = mymongo.Schema({
     date:String, 
 })
 
-const usersActivityModel = mymongo.model("UsersActivity",usersActivitySchema , "UsersActivity")
+const usersActivityModel = mymongo.model("usersActivityModel", usersActivitySchema, "UsersActivity")
 
 module.exports = usersActivityModel
