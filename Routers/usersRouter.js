@@ -2,13 +2,13 @@ const express = require("express")
 
 const router = express.Router()
 
-const animalCtrl = require("../Controllers/usersController")
+const userCtrl = require("../Controllers/usersController")
 
-router.get("/getAll", animalCtrl.getAll)
-router.get("/getById/:myid", animalCtrl.getById)
-router.post("/add", animalCtrl.add)
-router.put("/update", animalCtrl.update)
-router.delete("/delete/:myid", animalCtrl.delete)
+router.get("/getAll", userCtrl.getAll)
+router.get("/getById/:myid", userCtrl.getById)
+router.post("/add", userCtrl.add)
+router.put("/update", userCtrl.update)
+router.delete("/delete/:myid", userCtrl.delete)
 
 
 module.exports = router
