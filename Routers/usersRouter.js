@@ -4,6 +4,7 @@ const router = express.Router()
 
 const userCtrl = require("../Controllers/usersController")
 
+router.get("/", userCtrl.getAll);
 router.get("/getAll", userCtrl.getAll)
 router.get("/getById/:myid", userCtrl.getById)
 router.post("/add", userCtrl.add)
