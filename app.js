@@ -1,41 +1,28 @@
-
-const mymongo = require("mongoose")
-mymongo.connect("mongodb+srv://autodidact:CY0JbInyQLZ70Irr@maalot360db.i2kujcl.mongodb.net/maalot360db?retryWrites=true&w=majority&appName=maalot360db")
-const mydb = mymongo.connection;
-mydb.on("open", ()=>{
-    console.log("mongodb is open!!!");
-    
-})
-
-
 const express = require("express")
-const cors = require("cors")
-
-const animalRouter = require("./Routers/animalRouter")
+const mymongo = require("mongoose")
+const courseRouter = require("./Routers/coursesRouter") // או הנתיב המתאים
 
 const app = express()
+
+// חיבור למסד הנתונים המקומי
+  mymongo.connect("mongodb+srv://r0533160762:GkkpTBvELwtxkCBc@courses.m5ru6ic.mongodb.net/?retryWrites=true&w=majority&appName=Courses")  .then(() => console.log("Connected to MongoDB locally"))
+  .catch(err => console.error("MongoDB connection error:", err))
+
+app.use("/course", courseRouter)
+
+app.get("/", (req, res) => {
+  res.send(`
+    <h1>List of available requests in the server</h1>
+    <ul>
+       <li><a href="https://maalot360servernode-1.onrender.com/courses/getAll">https://maalot360servernode-1.onrender.com/courses/getAll</a></li>
+       <li><a href="https://maalot360servernode-1.onrender.com/courses/add">https://maalot360servernode-1.onrender.com/courses/add</a></li>
+       <li><a href="https://maalot360servernode-1.onrender.com/courses/delete/ID">https://maalot360servernode-1.onrender.com/courses/delete/ID</a></li>
+       <li><a href="https://maalot360servernode-1.onrender.com/courses/update/ID">https://maalot360servernode-1.onrender.com/courses/update/ID</a></li>
+    </ul>
+  `)
+})
+
 const PORT = 3000
-
-
-app.use(express.urlencoded({extended:true}))
-app.use(express.json())
-app.use(cors())
-
-app.use("/animal", animalRouter)
-
-
-app.get("/",(req,res)=>{
-    res.send(`<h1>List of request avilable in server</h1>
-              <ul>
-                    <li><a  href="https://maalot360-server.onrender.com/animal/getall" > https://maalot360-server.onrender.com/animal/getall </li>
-              </ul>
-    `)
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`)
 })
-
-app.listen(PORT, ()=>{
-    console.log("Server running...");
-    
-})
-
-
-
