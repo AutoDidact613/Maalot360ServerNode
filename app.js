@@ -13,7 +13,6 @@ const cors = require("cors")
 const animalRouter = require("./Routers/animalRouter")
 const contactUsRouter = require("./Routers/contactRouter");
 const pageContentRouter = require("./Routers/pageContentRouter");
-const animalRouter = require("./Routers/animalRouter");
 const meetingRouter = require("./Routers/meetingRouter");
 
 const app = express()
@@ -27,7 +26,6 @@ app.use(cors())
 app.use("/animal", animalRouter)
 app.use("/contact", contactUsRouter);
 app.use("/pageContent", pageContentRouter);
-app.use("/animal", animalRouter);
 app.use("/meetings", meetingRouter);
 
 
@@ -37,6 +35,7 @@ app.get("/",(req,res)=>{
                     <li><a href="https://maalot360-server.onrender.com/animal/getall" > https://maalot360-server.onrender.com/animal/getall </li>
                     <li><a href="https://maalot360-server.onrender.com/pageContent/getall" > https://maalot360-server.onrender.com/pageContent/getall </li>
                     <li><a href="https://maalot360-server.onrender.com/contact/getall" > https://maalot360-server.onrender.com/contact/getall </li>
+                    <li><a href="https://maalot360-server.onrender.com/meetings/getall" > https://maalot360-server.onrender.com/meetings/getall </li>
               </ul>
     `)
 })
