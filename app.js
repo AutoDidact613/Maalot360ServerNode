@@ -1,6 +1,6 @@
 
 const mymongo = require("mongoose")
-mymongo.connect("mongodb+srv://autodidact:CY0JbInyQLZ70Irr@maalot360db.i2kujcl.mongodb.net/maalot360db?retryWrites=true&w=majority&appName=maalot360db")
+mymongo.connect("mongodb://localhost:27017/TaskAndQuestions"); // Updated connection string
 const mydb = mymongo.connection;
 mydb.on("open", ()=>{
     console.log("mongodb is open!!!");
@@ -9,7 +9,6 @@ mydb.on("open", ()=>{
 
 const express = require("express")
 const cors = require("cors")
-
 const animalRouter = require("./Routers/animalRouter")
 const contactUsRouter = require("./Routers/contactRouter");
 const pageContentRouter = require("./Routers/pageContentRouter");
