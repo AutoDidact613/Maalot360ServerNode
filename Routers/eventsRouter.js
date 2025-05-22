@@ -11,7 +11,6 @@ router.get("/getByType/:mytype/", eventCtrl.getByType)
 router.post("/add", eventCtrl.add)
 router.put("/update/:myid", eventCtrl.update)
 router.delete("/delete/:myid", eventCtrl.delete)
-router.delete("/delete/:myid", eventCtrl.delete)
 
 
 module.exports = router
