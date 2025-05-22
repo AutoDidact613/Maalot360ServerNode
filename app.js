@@ -12,6 +12,7 @@ const cors = require("cors")
 const animalRouter = require("./Routers/animalRouter")
 const contactUsRouter = require("./Routers/contactRouter");
 const pageContentRouter = require("./Routers/pageContentRouter");
+const taskRouter = require("./Routers/taskRouter");
 
 const app = express()
 const PORT = 3000
@@ -24,7 +25,7 @@ app.use(cors())
 app.use("/animal", animalRouter)
 app.use("/contact", contactUsRouter);
 app.use("/pageContent", pageContentRouter);
-
+app.use('/task', taskRouter)
 
 app.get("/",(req,res)=>{
     res.send(`<h1>List of request avilable in server</h1>
