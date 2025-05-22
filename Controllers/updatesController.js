@@ -2,14 +2,14 @@
 const express = require("express")
 
 
-const animModel = require("../Models/animalModel")
+const updateModel = require("../Models/updatesModel")
 
-const animal = {}
+const update = {}
 
-animal.getAll = async(req, res)=>{
+update.getAll = async(req, res)=>{
 
     try {
-        let data = await animModel.find({})
+        let data = await updateModel.find({})
         res.status(200)
         res.json(data)
 
@@ -22,10 +22,10 @@ animal.getAll = async(req, res)=>{
     
 }
 
-animal.getById = async(req,res)=>{
+update.getById = async(req,res)=>{
     let myid = req.params.myid
     try {
-        let data = await animModel.find({code:myid})
+        let data = await updateModel.find({_id:myid})
         res.status(200)
         res.json(data)
 
@@ -33,13 +33,13 @@ animal.getById = async(req,res)=>{
         res.status(500)
         res.send("<h1>Server Error</h1>")
     }}
+    
 
-
-animal.delete = async(req,res)=>{
-    let id = req.params.myid
+    update.delete = async(req,res)=>{
+    let myid = req.params.myid
     try {
-        await animModel.deleteOne({code:id})
-        let data = await animModel.find({})
+        await updateModel.deleteOne({_id:myid})
+        let data = await updateModel.find({})
         res.status(200)
         res.json(data)
 
@@ -49,11 +49,11 @@ animal.delete = async(req,res)=>{
     }
 }
 
-animal.add = async(req, res)=>{
-    let newAnim = req.body
+update.add = async(req, res)=>{
+    let newUpdate = req.body
     try {
-        await animModel.create(newAnim)
-        let data = await animModel.find({})
+        await updateModel.create(newUpdate)
+        let data = await updateModel.find({})
         res.status(200)
         res.json(data)
 
@@ -62,13 +62,13 @@ animal.add = async(req, res)=>{
         res.send("<h1>Server Error</h1>")
     }}
 
-animal.update = async(req, res)=>{
-    let id = req.params.myid
-    let editAnim = req.body
+    update.update = async(req, res)=>{
+    let myid = req.params.myid
+    let editUpdate = req.body
     
     try {
-        await animModel.updateOne({code:id}, editAnim)
-        let data = await animModel.find({})
+        await updateModel.updateOne({_id:myid}, editUpdate)
+        let data = await updateModel.find({})
         res.status(200)
         res.json(data)
 
@@ -79,4 +79,4 @@ animal.update = async(req, res)=>{
 
 
 
-module.exports = animal
+module.exports = update
