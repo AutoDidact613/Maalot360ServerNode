@@ -31,7 +31,7 @@ app.get("/",(req,res)=>{
     res.send(`<h1>List of request avilable in server</h1>
               <ul>
                     <li><a href="https://maalot360-server.onrender.com/animal/getall" > https://maalot360-server.onrender.com/animal/getall </li>
-                    <li><a href="https://maalot360-server.onrender.com/pageContent/getall" > https://maalot360-server.onrender.com/pageContent/getall </li>
+                    <li><a href="https://maalot360-server.onrender.com/pageContent/" > https://maalot360-server.onrender.com/pageContent/ </li>
                     <li><a href="https://maalot360-server.onrender.com/contact/getall" > https://maalot360-server.onrender.com/contact/getall </li>
               </ul>
     `)
