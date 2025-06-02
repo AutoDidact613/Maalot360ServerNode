@@ -58,9 +58,15 @@ event.update = async (req, res) => {
     const myid = Number(req.params.myid);
     const editEvent = req.body;
     try {
-        await eventModel.updateOne({ _id: myid }, editEvent);
-        const data = await eventModel.find({});
-        res.status(200).json(data);
+        const result = await eventModel.updateOne(
+            { _id: myid },
+            { $set: editEvent }
+        );
+        if (result.matchedCount === 0) {
+            return res.status(404).json({ message: "Event not found" });
+        }
+        const updated = await eventModel.findOne({ _id: myid });
+        res.status(200).json(updated);
     } catch (error) {
         res.status(500).send("<h1>Server Error</h1>");
     }
